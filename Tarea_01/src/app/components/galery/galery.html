@@ -1,0 +1,31 @@
+<div class="content">
+    <h1>Seleccione una categoria</h1>
+    <div class="Panel">
+        <mat-form-field>
+            <mat-label>Select</mat-label>
+            <mat-select [(value)]="categoria" (selectionChange)="cambiarCategoria($event.value)">
+
+                <mat-option value="naturaleza">naturaleza</mat-option>
+                <mat-option value="tecnologia">tecnología</mat-option>
+                <mat-option value="animales">animales</mat-option>
+                <mat-option value="deportes">deportes</mat-option>
+                <mat-option value="comida">comida</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button class="boton" (click)="cambiarCategoria('')">Reset</button>
+    </div>
+    <h2>Galeria de Imagenes</h2>
+
+    <div class="galeria">
+
+        @for(i of imagenes; track i){
+        @if(i.categoria==categoria || categoria == ''){
+        <div class="cartaimg">
+            <p>{{i.titulo}}</p>
+            <img [src]="i.url">
+        </div>
+        }
+        }
+    </div>
+
+</div>
